@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">AssetTrackingApp</string>
+    <string name="search_items">Search Items</string>
+
+    <string-array name="list_location">
+        <item>Manger</item>
+        <item>Sales</item>
+        <item>Software Dep</item>
+
+
+    </string-array>
+
+</resources>

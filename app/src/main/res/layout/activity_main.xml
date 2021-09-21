@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+
+    tools:context=".UI.MainActivity">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottie_view"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_170sdp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_rawRes="@raw/furniture1"
+
+        />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/importFileBtn"
+            android:layout_width="@dimen/_170sdp"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/_30sdp"
+            android:paddingEnd="@dimen/_30sdp"
+            android:background="@drawable/button_background_import"
+            android:elevation="@dimen/_10sdp"
+            android:text=" Import File "
+            android:fontFamily="@font/ubuntu_bold"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/_15ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lottie_view" />
+
+
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/HomeBtn"
+        android:layout_width="@dimen/_170sdp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/use_data_btn_background"
+        android:elevation="@dimen/_10sdp"
+        android:text="Continue Tracking"
+        android:paddingEnd="@dimen/_5sdp"
+        android:paddingStart="@dimen/_5sdp"
+        android:fontFamily="@font/ubuntu_bold"
+
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/_15ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.524"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/importFileBtn" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/clearBtn"
+        android:layout_width="@dimen/_170sdp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/clear_storage_btn_background"
+        android:elevation="@dimen/_10sdp"
+        android:paddingStart="@dimen/_30sdp"
+        android:paddingEnd="@dimen/_30sdp"
+        android:text="Clear Old  Data"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/_15ssp"
+        android:fontFamily="@font/ubuntu_bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/HomeBtn" />
+
+<!--    <androidx.appcompat.widget.AppCompatButton-->
+<!--        android:id="@+id/aboutBtn"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:background="@drawable/use_data_btn_background"-->
+<!--        android:elevation="@dimen/_10sdp"-->
+
+<!--        android:paddingStart="@dimen/_30sdp"-->
+<!--        android:paddingTop="@dimen/_5sdp"-->
+<!--        android:paddingEnd="@dimen/_30sdp"-->
+<!--        android:paddingBottom="@dimen/_5sdp"-->
+<!--        android:text="About Win"-->
+<!--        android:textAllCaps="false"-->
+<!--        android:textColor="@color/colorWhite"-->
+<!--        android:textSize="@dimen/_15ssp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.497"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/deleteBtn" />-->
+
+
+    <TextView
+        android:id="@+id/aboutWinTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="About Win "
+        android:textColor="@color/white"
+       android:fontFamily="@font/ubuntu_bold_italic"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:textSize="@dimen/_17ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+           app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintBottom_toBottomOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
