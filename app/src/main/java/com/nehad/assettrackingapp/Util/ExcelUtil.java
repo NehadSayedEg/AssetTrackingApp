@@ -106,8 +106,6 @@ public class ExcelUtil {
                                 itemMap.put(key, value);
                                 assetModel.setDescription(value.toString());
 
-
-
                             }
                             if (j ==  2){
                                 String key = "loc";
@@ -115,7 +113,6 @@ public class ExcelUtil {
                                 assetModel.setLocation(value.toString());
 
                             }
-
                             if (j ==  3){
                                 String key = "status";
                                 itemMap.put(key, value);
@@ -125,7 +122,6 @@ public class ExcelUtil {
 
                             }
                             //itemMap.put(j, value);
-
                             Log.i(TAG, "item Map Size: " + itemMap.size());
                             Log.i(TAG, "item Map  " + itemMap);
 
@@ -135,11 +131,14 @@ public class ExcelUtil {
                         break;
                     }
                     // insert assets data to database
+                    assetModel.setFound(false);
+
                     AssetsDatabase.getAssetsDatabase(context.getApplicationContext()).assetsDao().insertAsset(assetModel);
 
-                    JSONObject jsonObject = new JSONObject(itemMap);
 
-                    Log.i(TAG, "Json Object  Map  " + jsonObject);
+//                    JSONObject jsonObject = new JSONObject(itemMap);
+//
+//                    Log.i(TAG, "Json Object  Map  " + jsonObject);
 
                 //    list.add(itemMap);
                 }

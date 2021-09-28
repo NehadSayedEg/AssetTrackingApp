@@ -6,8 +6,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import com.nehad.assettrackingapp.Database.AssetsDatabase;
@@ -20,14 +24,13 @@ import com.nehad.assettrackingapp.databinding.ActivityMainBinding;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class AllAssetsActivity extends AppCompatActivity {
     private ActivityAllAssetsBinding binding;
     public static final String TAG = AllAssetsActivity.class.getSimpleName();
-    private RecyclerView allAssetsRV ;
     private List<AssetModel> assetModelList;
-    private  AllAssetsAdapter adapter ;
-    private Context mContext;
 
 
     @Override
@@ -47,16 +50,39 @@ public class AllAssetsActivity extends AppCompatActivity {
 
         }).start();
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
 
-        binding.allAssetsRV.setLayoutManager(layoutManager );
-        assetModelList = new ArrayList<>();
-        adapter = new AllAssetsAdapter(assetModelList);
-        binding.allAssetsRV.setAdapter(adapter);
 
 
 
         getAllAssets();
+
+
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        Handler handler = new Handler(Looper.getMainLooper());
+
+        executor.execute(() -> {
+            assetModelList = AssetsDatabase.getAssetsDatabase(getApplicationContext()).assetsDao().getAllAssets();
+            Log.i("DatabaseSize",
+                    assetModelList.get(0).getLocation()
+                            + "");
+
+
+
+
+            //Background work here
+            handler.post(() -> {
+                //UI Thread work here
+
+                LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+
+                binding.allAssetsRV.setLayoutManager(layoutManager );
+                AllAssetsAdapter adapter = new AllAssetsAdapter(assetModelList);
+                binding.allAssetsRV.setAdapter(adapter);
+
+
+                });
+            });
+
     }
 
 
@@ -65,7 +91,6 @@ public class AllAssetsActivity extends AppCompatActivity {
         new Thread(() -> {
             Log.i(TAG, "doInBackground: get All assets from Assets Table ...");
 
-            AssetsDatabase.getAssetsDatabase(getApplicationContext()).assetsDao().getAllAssets();
 
             Log.i("DatabaseSize",
                     AssetsDatabase.getAssetsDatabase(getApplicationContext()).assetsDao().getAllAssets().size()

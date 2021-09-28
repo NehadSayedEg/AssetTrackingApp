@@ -1,10 +1,12 @@
 package com.nehad.assettrackingapp.UI;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -12,7 +14,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.nehad.assettrackingapp.Database.AssetsDatabase;
+import com.nehad.assettrackingapp.R;
 import com.nehad.assettrackingapp.Util.ExcelUtil;
 import com.nehad.assettrackingapp.databinding.ActivityMainBinding;
 
@@ -39,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
 //        setContentView(R.layout.activity_main);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
         binding.importFileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,7 +55,8 @@ public class MainActivity extends AppCompatActivity {
         binding.HomeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                assetsDBSize();
+
+            assetsDBSize();
 
             }
         });
@@ -58,7 +64,25 @@ public class MainActivity extends AppCompatActivity {
         binding.clearBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clearAssetsDB();
+//                clearAssetsDB();
+
+                AlertDialog dialog = new MaterialAlertDialogBuilder(MainActivity.this, R.style.AlertDialogTheme).setTitle("Delete Data")
+                        .setMessage("Are you Sure you want to delete Data?")
+
+
+                        .setPositiveButton("Delete",
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        clearAssetsDB();
+                                    }
+                                }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        }).create();
+                dialog.show();
 
             }
         });
@@ -205,7 +229,34 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    private void getAssetsLocation() {
+
+        new Thread(() -> {
+            Log.i(TAG, "doInBackground: get location database Table ...");
+
+            int size =  AssetsDatabase.getAssetsDatabase(getApplicationContext()).assetsDao().getAllAssets().size();
 
 
+            Log.i("DatabaseSize",
+                    AssetsDatabase.getAssetsDatabase(getApplicationContext()).assetsDao().getAllAssets().size()
+                            + "");
+
+            for (int i = 0 ; i>= size ; i++ ) {
+                String loc =
+                        AssetsDatabase.getAssetsDatabase(getApplicationContext()).assetsDao().getAllAssets().get(i).getLocation();
+
+                Log.i("loc ", loc + "");
+
+            }
+
+
+
+
+        }).start();
 
     }
+
+
+
+
+}

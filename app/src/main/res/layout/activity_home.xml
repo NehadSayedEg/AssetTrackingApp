@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-        android:background="@color/colorPrimary"
+    android:background="@color/colorPrimary"
 
 
     tools:context=".UI.HomeActivity">
@@ -22,6 +22,17 @@
 
         />
 
+    <LinearLayout
+        android:id="@+id/location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lottie_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/colorPrimary"
+        >
+
 
 
         <com.google.android.material.textfield.TextInputLayout
@@ -29,32 +40,38 @@
             android:layout_width="@dimen/_200sdp"
             android:layout_height="wrap_content"
             android:textColorHint="@color/white"
-            app:startIconDrawable="@drawable/ic_location"
             app:hintTextColor="@color/white"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/lottie_view"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:endIconDrawable="@drawable/ic_down"
+            android:background="@color/colorPrimary"
+
+
 
 
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             >
+<!--            app:endIconDrawable="@drawable/ic_down"-->
+<!--            app:startIconDrawable="@drawable/ic_location"-->
+
+
+
             <AutoCompleteTextView
                 android:id="@+id/autoComplete"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:enabled="false"
                 android:inputType="none"
-                android:hint=" click to select Location"
+                android:hint="@string/click_to_select_location"
+                android:background="@color/colorPrimary"
 
-                android:textColor="@color/white"
-
-
+            android:textColor="@color/white"
 
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
-      <androidx.appcompat.widget.AppCompatButton
+
+    </LinearLayout>
+
+
+    <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/scanLocationBtn"
             android:layout_width="@dimen/_170sdp"
             android:layout_height="wrap_content"
@@ -71,7 +88,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/location_spinner" />
+            app:layout_constraintTop_toBottomOf="@id/location" />
 
 
 
