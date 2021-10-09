@@ -25,6 +25,7 @@ import com.nehad.assettrackingapp.Database.entities.AssetModel;
 import com.nehad.assettrackingapp.R;
 import com.nehad.assettrackingapp.UI.AllAssetsActivity.AllAssetsActivity;
 import com.nehad.assettrackingapp.UI.AssetsLocation.AssetsLocationActivity;
+import com.nehad.assettrackingapp.UI.SearchScanedAsset.SearchAssetActivity;
 import com.nehad.assettrackingapp.databinding.ActivityHomeBinding;
 
 import java.util.ArrayList;
@@ -117,9 +118,20 @@ public class HomeActivity extends AppCompatActivity {
                     startActivity(intent);
                 }else{
 
-                    Toast.makeText(getApplicationContext() , "Please select  location first  :" , Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext() , getString(R.string.toastLocation), Toast.LENGTH_LONG).show();
 
                 }
+
+
+            }
+        });
+
+        binding.searchBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    Intent intent = new Intent(HomeActivity.this , SearchAssetActivity.class);
+                    startActivity(intent);
+
 
 
             }
@@ -130,24 +142,21 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                AlertDialog dialog = new MaterialAlertDialogBuilder(HomeActivity.this, R.style.AlertDialogTheme).setTitle("Delete Data")
-                        .setMessage("Are you Sure you want to delete Data?")
-
-
-                        .setPositiveButton("Delete",
+                AlertDialog dialog = new MaterialAlertDialogBuilder(HomeActivity.this, R.style.AlertDialogTheme).setTitle(R.string.deleteTitle)
+                        .setMessage(R.string.deleteMessage)
+                        .setPositiveButton(R.string.deleteBtn,
                                 new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 clearAssetsDB();
-                                Toast.makeText(getApplicationContext(), "Bach to Main", Toast.LENGTH_LONG).show();
-
+//                                Toast.makeText(getApplicationContext(), "Bach to Main", Toast.LENGTH_LONG).show();
                                 Intent intent = new Intent(HomeActivity.this, MainActivity.class);
                                 startActivity(intent);
                                 finish();
 
 
                             }
-                        }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        }).setNegativeButton(R.string.cancelBtn, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.dismiss();

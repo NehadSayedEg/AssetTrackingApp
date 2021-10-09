@@ -11,12 +11,14 @@
         android:id="@+id/missingAssetsTxt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/ubuntu_bold"
-        android:text="Missing Assets"
+        android:text="@string/missing_assets"
         android:textAlignment="center"
         android:textColor="@color/colorNoteColor3"
         android:textSize="@dimen/_18ssp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,9 +26,11 @@
         android:layout_width="@dimen/_200sdp"
         android:layout_height="@dimen/_5sdp"
         android:layout_marginTop="486dp"
+        android:layout_marginBottom="484dp"
         android:background="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/missingAssetsRV"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/foundAssetsTxt" />
 
@@ -34,15 +38,14 @@
         android:id="@+id/missingAssetsRV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_3sdp"
         android:background="@color/colorPrimary"
         android:clipToPadding="false"
         android:padding="@dimen/_5sdp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.428"
 
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/missingAssetsTxt"
+        app:layout_constraintVertical_bias="0.064"
+        tools:layout_editor_absoluteX="0dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

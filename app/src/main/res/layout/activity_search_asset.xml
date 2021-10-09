@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+
+    tools:context=".UI.SearchScanedAsset.SearchAssetActivity">
+
+
+
+
+<EditText
+    android:id="@+id/barcodeEt"
+    android:layout_width="406dp"
+    android:layout_height="29dp"
+    android:layout_marginTop="28dp"
+    android:background="@null"
+    android:defaultFocusHighlightEnabled="true"
+    android:focusable="true"
+    android:focusedByDefault="true"
+    android:hint="@string/barcodeET"
+    android:imeOptions="actionDone"
+    android:importantForAutofill="no"
+    android:inputType="text"
+    android:padding="@dimen/_4ssp"
+    android:selectAllOnFocus="true"
+    android:textAlignment="center"
+    android:textColor="@color/white"
+    android:textColorHint="@color/white"
+    android:textSize="@dimen/_14ssp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+
+    <LinearLayout
+        android:id="@+id/assetItemLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/asset_item_background_blue"
+        android:layout_margin="@dimen/_7sdp"
+        android:padding="@dimen/_5sdp"
+        app:layout_constraintEnd_toEndOf="@+id/barcodeEt"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/barcodeEt"
+        app:layout_constraintTop_toBottomOf="@+id/barcodeEt"
+        android:visibility="gone"
+        >
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:id="@+id/destxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:fontFamily="@font/ubuntu_bold_italic"
+                android:textColor="@color/white"
+                android:padding="@dimen/_5sdp"
+                android:textSize="@dimen/_13ssp"
+                android:text="@string/description"
+                android:includeFontPadding="false"
+                android:layout_marginStart="@dimen/_10sdp"
+                />
+            <TextView
+                android:id="@+id/itemDes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:fontFamily="@font/ubuntu_bold_italic"
+                android:textColor="@color/colorNoteColor2"
+                android:padding="@dimen/_5sdp"
+                android:textSize="@dimen/_13ssp"
+                android:text="Description"
+                android:includeFontPadding="false"
+                android:layout_marginStart="@dimen/_10sdp"
+                />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/barcodeTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:fontFamily="@font/ubuntu_bold_italic"
+                android:textColor="@color/white"
+                android:padding="@dimen/_5sdp"
+                android:textSize="@dimen/_13ssp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:text="@string/barcode"
+                android:includeFontPadding="false"
+                />
+
+            <TextView
+                android:id="@+id/itemBarcode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:fontFamily="@font/ubuntu_bold_italic"
+                android:textColor="@color/colorNoteColor2"
+                android:padding="@dimen/_5sdp"
+                android:textSize="@dimen/_13ssp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:text="@string/bar"
+                android:includeFontPadding="false"
+                />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/locTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/ubuntu_bold_italic"
+                android:textColor="@color/white"
+                android:padding="@dimen/_5sdp"
+                android:textSize="@dimen/_13ssp"
+                android:textAlignment="center"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:text="@string/location"
+                android:includeFontPadding="false"
+                />
+            <TextView
+                android:id="@+id/itemLoc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/ubuntu_bold_italic"
+                android:textColor="@color/colorNoteColor2"
+                android:padding="@dimen/_5sdp"
+                android:textSize="@dimen/_13ssp"
+                android:textAlignment="center"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:text="@string/location"
+                android:includeFontPadding="false"
+                />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/ubuntu_bold_italic"
+                android:textColor="@color/white"
+                android:padding="@dimen/_5sdp"
+                android:textSize="@dimen/_13ssp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:text="@string/scanned_before"
+                android:includeFontPadding="false"
+                />
+
+            <TextView
+                android:id="@+id/itemStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/ubuntu_bold_italic"
+                android:textColor="@color/colorNoteColor3"
+                android:padding="@dimen/_5sdp"
+                android:textSize="@dimen/_13ssp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:text="@string/scannedstatus"
+                android:includeFontPadding="false"
+                />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/backBtn"
+        android:layout_width="@dimen/_170sdp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
+        android:background="@drawable/button_background_import"
+        android:elevation="@dimen/_10sdp"
+        android:fontFamily="@font/ubuntu_bold"
+        android:paddingStart="@dimen/_30sdp"
+        android:paddingEnd="@dimen/_30sdp"
+        android:text="@string/back"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/_15ssp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

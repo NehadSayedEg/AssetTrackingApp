@@ -4,28 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UI.FoundAssetsActivity.FoundAssetsActivity"
     android:background="@color/colorPrimary"
-    >
+    tools:context=".UI.FoundAssetsActivity.FoundAssetsActivity">
+
 
     <TextView
         android:id="@+id/foundAssetsTxt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Found Assets"
+        android:fontFamily="@font/ubuntu_bold"
+        android:text="@string/found_assets"
+        android:textAlignment="center"
         android:textColor="@color/colorNoteColor4"
         android:textSize="@dimen/_18ssp"
-        android:textAlignment="center"
-        android:fontFamily="@font/ubuntu_bold"
-        app:layout_constraintBottom_toTopOf="@+id/foundAssetsRV"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-
-
+        tools:layout_editor_absoluteX="-3dp"
+        tools:layout_editor_absoluteY="29dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/foundAssetsRV"
@@ -37,11 +30,10 @@
         android:padding="@dimen/_5sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.428"
-        app:layout_constraintStart_toStartOf="parent" />
-
-
-
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/foundAssetsTxt"
+        app:layout_constraintVertical_bias="0.052" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

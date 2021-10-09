@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,6 +8,37 @@
     android:background="@color/colorPrimary"
 
     tools:context=".UI.MainActivity">
+
+
+
+    <TextView
+        android:id="@+id/arabicLang"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp"
+        android:layout_marginStart="92dp"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/ubuntu_bold_italic"
+        android:gravity="center_horizontal"
+        android:text="@string/arabic_lang"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_14ssp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/englishLang"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/english"
+        android:layout_margin="@dimen/_10sdp"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:fontFamily="@font/ubuntu_bold_italic"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:textSize="@dimen/_14ssp"/>
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottie_view"
@@ -28,7 +60,7 @@
             android:paddingEnd="@dimen/_30sdp"
             android:background="@drawable/button_background_import"
             android:elevation="@dimen/_10sdp"
-            android:text=" Import File "
+            android:text="@string/import_file"
             android:fontFamily="@font/ubuntu_bold"
             android:textAllCaps="false"
             android:textColor="@color/colorWhite"
@@ -48,7 +80,7 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/use_data_btn_background"
         android:elevation="@dimen/_10sdp"
-        android:text="Continue Tracking"
+        android:text="@string/continue_tracking"
         android:paddingEnd="@dimen/_5sdp"
         android:paddingStart="@dimen/_5sdp"
         android:fontFamily="@font/ubuntu_bold"
@@ -68,9 +100,9 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/clear_storage_btn_background"
         android:elevation="@dimen/_10sdp"
-        android:paddingStart="@dimen/_30sdp"
-        android:paddingEnd="@dimen/_30sdp"
-        android:text="Clear Old  Data"
+        android:paddingStart="@dimen/_10sdp"
+        android:paddingEnd="@dimen/_10sdp"
+        android:text="@string/clear_old_data"
         android:textAllCaps="false"
         android:textColor="@color/colorWhite"
         android:textSize="@dimen/_15ssp"
@@ -104,16 +136,27 @@
 
     <TextView
         android:id="@+id/aboutWinTxt"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="About Win "
-        android:textColor="@color/white"
-       android:fontFamily="@font/ubuntu_bold_italic"
+        android:layout_marginBottom="132dp"
+        android:fontFamily="@font/ubuntu_bold_italic"
         android:gravity="center_horizontal"
-        android:layout_marginBottom="@dimen/_10sdp"
-        android:textSize="@dimen/_17ssp"
+        android:text="@string/u00a9_about_win"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_12ssp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-           app:layout_constraintStart_toStartOf="parent"
-       app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/arc_progress"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:background="@color/colorNoteColor4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+     />
 </androidx.constraintlayout.widget.ConstraintLayout>

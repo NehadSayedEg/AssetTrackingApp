@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--    Main Activity -->
+    <string name="send_to">Send to...</string>
+    <string name="import_file">ادخل ملف جديد</string>
+    <string name="continue_tracking">تابع الجرد</string>
+    <string name="clear_old_data">مسح البيانات القديمه</string>
+    <string name="u00a9_about_win">©عن ون ون للحلول الذكيه</string>
+    <string name="arabic_lang">عربى</string>
+    <string name="english">English</string>
+
+
+    <!--Home Activity-->
+    <string name="click_to_select_location"><font size="25">اضغط لاختار موقع</font></string>
+    <string name="scan_location">موقع الجرد</string>
+    <string name="all_assets">جميع الأوصول</string>
+    <string name="clear_old">Clear Old Data</string>
+    <string name="search_asset">بحث الأوصول </string>
+
+    <!--    item card-->
+    <string name="description">وصف </string>
+    <string name="barcode">كود </string>
+    <string name="location">موقع </string>
+    <string name="status">حاله</string>
+    <string name="statusitem">statusitem</string>
+
+
+
+    <!--    missing Activity -->
+    <string name="missing_assets">الأوصول المفقودة</string>
+
+    <!--    missing found -->
+    <string name="found_assets">الأوصول الموجودة</string>
+
+    <string name="itemStatusMissing">مفقود</string>
+    <string name="itemStatusfound">موجود</string>
+
+
+    <!--    scan Activity-->
+    <string name="barcodeET">كود</string>
+    <string name="finish_scanBtn">انهى جرد الموقع </string>
+
+    <!--    Assets location Activity-->
+    <string name="scan_assetsBtn">جرد الأوصول</string>
+    <string name="found_assetsBtn">الأوصول الموجودة</string>
+    <string name="missing_assetsBtn">الأوصول المفقودة</string>
+    <string name="export_files">استخرج ملفات الجرد</string>
+
+    <string name="back_to_location">الرجوع للموقع</string>
+    <string name="openfolder">افتح مجلدالملفات</string>
+
+
+
+    <!--    Search Activity -->
+    <string name="scanned_before">تم الجرد من قبل </string>
+    <string name="no">لا</string>
+    <string name="yes">نعم </string>
+    <string name="back">الرجوع للخلف</string>
+    <string name="scannedstatus">scannedStatus</string>
+    <!--    <string name="location">Location:</string>-->
+    <string name="bar">Barcode</string>
+
+    <!--    Alert Dialog clear Storage  -->
+
+    <string name="deleteTitle">مسح الذاكره</string>
+    <string name="deleteMessage">هل تريد مسح الزاكرة الحاليه؟ </string>
+    <string name="deleteBtn">مسح</string>
+    <string name="cancelBtn">لا</string>
+
+    <string name="toastLocation">أختر الموقع أولا</string>
+    <string name="toastimported">تم ادخال البيانات بنجاح</string>
+
+
+
+
+
+
+
+
+
+
+</resources>

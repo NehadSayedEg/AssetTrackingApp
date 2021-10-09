@@ -29,6 +29,8 @@ public class AssetModel implements Serializable {
     @ColumnInfo(name = "found")
     private boolean found ;
 
+    @ColumnInfo(name = "scannedBefore")
+    private boolean scannedBefore ;
     @ColumnInfo(name = "missing")
     private boolean missing ;
 
@@ -72,6 +74,14 @@ public class AssetModel implements Serializable {
         this.found = found;
     }
 
+    public boolean isScannedBefore() {
+        return scannedBefore;
+    }
+
+    public void setScannedBefore(boolean scannedBefore) {
+        this.scannedBefore = scannedBefore;
+    }
+
     public boolean isMissing() {
         return missing;
     }
@@ -90,6 +100,7 @@ public class AssetModel implements Serializable {
                 ", description='" + description + '\'' +
                 ", status=" + status +
                 ", found=" + found +
+                ", scannedBefore=" + scannedBefore +
                 ", missing=" + missing +
                 '}';
     }

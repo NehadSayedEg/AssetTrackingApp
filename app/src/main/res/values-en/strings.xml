@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--    Main Activity -->
+    <string name="send_to">Send to...</string>
+    <string name="import_file">Import File</string>
+    <string name="continue_tracking">Continue Tracking</string>
+    <string name="clear_old_data">Clear Old Data</string>
+    <string name="u00a9_about_win">© About Win</string>
+    <string name="arabic_lang">عربى</string>
+    <string name="english">English</string>
+
+
+    <!--Home Activity-->
+    <string name="click_to_select_location"><font size="25">click to select Location</font></string>
+    <string name="scan_location">Scan location</string>
+    <string name="all_assets">All assets</string>
+    <string name="clear_old">Clear Old Data</string>
+    <string name="search_asset">Search Asset</string>
+
+
+    <!--    item card-->
+    <string name="description">Description:</string>
+    <string name="barcode">Barcode:</string>
+    <string name="location">Location:</string>
+    <string name="status">Status</string>
+    <string name="statusitem">statusitem</string>
+
+
+    <!--    missing Activity -->
+    <string name="missing_assets">Missing Assets</string>
+
+    <!--    missing found -->
+    <string name="found_assets">Found Assets</string>
+    <string name="itemStatusMissing">Missing</string>
+    <string name="itemStatusfound">Found</string>
+
+
+    <!--    scan Activity-->
+    <string name="barcodeET">Barcode</string>
+    <string name="finish_scanBtn">Finish Scan</string>
+
+    <!--    Assets location Activity-->
+    <string name="scan_assetsBtn">Scan Assets</string>
+    <string name="found_assetsBtn">Found Assets</string>
+    <string name="missing_assetsBtn">Missing Assets</string>
+    <string name="export_files">Export Files</string>
+    <string name="back_to_location">back to location</string>
+    <string name="openfolder">Open Files Folder</string>
+
+
+    <!--    Search Activity -->
+    <string name="scanned_before">Scanned before:</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
+    <string name="back">Back</string>
+    <string name="scannedstatus">scannedStatus</string>
+<!--    <string name="location">Location:</string>-->
+    <string name="bar">Barcode</string>
+
+    <!--    Alert Dialog clear Storage  -->
+
+    <string name="deleteTitle">Delete Data</string>
+    <string name="deleteMessage">Are you Sure you want to delete Data?</string>
+    <string name="deleteBtn">Delete</string>
+    <string name="cancelBtn">Cancel</string>
+
+    <string name="toastLocation">Please select  location first </string>
+    <string name="toastimported">successfully imported</string>
+
+
+</resources>

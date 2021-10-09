@@ -14,6 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AssetTrackingApp">
         <activity
+            android:name=".UI.SearchScanedAsset.SearchAssetActivity"
+            android:exported="true" />
+        <activity android:name=".UI.AboutWinActivity" />
+        <activity
             android:name=".UI.ExportFilesActivity.ExportFilesActivity"
             android:exported="true" />
         <activity

@@ -17,14 +17,16 @@ import android.widget.Toast;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.nehad.assettrackingapp.Database.AssetsDatabase;
 import com.nehad.assettrackingapp.R;
+import com.nehad.assettrackingapp.Util.AppCompact;
 import com.nehad.assettrackingapp.Util.ExcelUtil;
+import com.nehad.assettrackingapp.Util.LanguageManager;
 import com.nehad.assettrackingapp.databinding.ActivityMainBinding;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompact {
     private ActivityMainBinding binding;
 
     public static final String TAG = MainActivity.class.getSimpleName();
@@ -32,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private int FILE_SELECTOR_CODE = 10000;
     private int DIR_SELECTOR_CODE = 20000;
     private List<Map<Integer, Object>> readExcelList = new ArrayList<>();
+
     private RecyclerView recyclerView;
    // private ExcelAdapter excelAdapter;
 
@@ -40,9 +43,40 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         mContext = this;
 
-//        setContentView(R.layout.activity_main);
+
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        LanguageManager languageManager = new LanguageManager(this);
+
+
+        binding.aboutWinTxt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this , AboutWinActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        binding.arabicLang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                languageManager.updateResources("ar");
+                recreate();
+
+            }
+        });
+
+
+        binding.englishLang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                languageManager.updateResources("en");
+                recreate();
+
+            }
+        });
 
         binding.importFileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,17 +100,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 //                clearAssetsDB();
 
-                AlertDialog dialog = new MaterialAlertDialogBuilder(MainActivity.this, R.style.AlertDialogTheme).setTitle("Delete Data")
-                        .setMessage("Are you Sure you want to delete Data?")
-
-
-                        .setPositiveButton("Delete",
+                AlertDialog dialog = new MaterialAlertDialogBuilder(MainActivity.this, R.style.AlertDialogTheme).setTitle(R.string.deleteTitle)
+                        .setMessage(R.string.deleteMessage)
+                        .setPositiveButton(R.string.deleteBtn,
                                 new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
                                         clearAssetsDB();
                                     }
-                                }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                                }).setNegativeButton(R.string.cancelBtn, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.dismiss();
@@ -148,7 +180,9 @@ public class MainActivity extends AppCompatActivity {
     private void importExcelDeal(final Uri uri) {
         new Thread(() -> {
             Log.i(TAG, "doInBackground: Importing...");
-            runOnUiThread(() -> Toast.makeText(mContext, "Importing...", Toast.LENGTH_SHORT).show());
+            runOnUiThread(() ->
+                    Toast.makeText(mContext, "Importing...", Toast.LENGTH_SHORT).show());
+           binding.arcProgress.setVisibility(View.VISIBLE);
 
             List<Map<Integer, Object>> readExcelNew = ExcelUtil.readExcelNew(mContext, uri, uri.getPath());
 
@@ -161,7 +195,9 @@ public class MainActivity extends AppCompatActivity {
                 assetsDBSize();
 
                 Log.i(TAG, "run: successfully imported");
-                runOnUiThread(() -> Toast.makeText(mContext, "successfully imported", Toast.LENGTH_SHORT).show()
+                runOnUiThread(() -> Toast.makeText(mContext,  getString(R.string.toastimported), Toast.LENGTH_SHORT).show()
+
+
 
                 );
 

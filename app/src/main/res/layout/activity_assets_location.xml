@@ -4,30 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UI.AssetsLocation.AssetsLocationActivity"
-    android:background="@color/colorPrimary">
+    android:background="@color/colorPrimary"
+    tools:context=".UI.AssetsLocation.AssetsLocationActivity">
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottie_view"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/_170sdp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="@dimen/_140sdp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:lottie_autoPlay="true"
-        app:lottie_rawRes="@raw/furniture"
-        />
+        app:lottie_rawRes="@raw/furniture" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/scanBtn"
         android:layout_width="@dimen/_170sdp"
         android:layout_height="wrap_content"
-        android:paddingStart="@dimen/_30sdp"
-        android:paddingEnd="@dimen/_30sdp"
         android:background="@drawable/button_background_import"
         android:elevation="@dimen/_10sdp"
-        android:text=" Scan Assets "
         android:fontFamily="@font/ubuntu_bold"
+        android:paddingStart="@dimen/_30sdp"
+        android:paddingEnd="@dimen/_30sdp"
+        android:text="@string/scan_assetsBtn"
         android:textAllCaps="false"
         android:textColor="@color/colorWhite"
         android:textSize="@dimen/_15ssp"
@@ -37,19 +36,17 @@
         app:layout_constraintTop_toBottomOf="@id/lottie_view" />
 
 
-
-
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/foundBtn"
         android:layout_width="@dimen/_170sdp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/use_data_btn_background"
         android:elevation="@dimen/_10sdp"
-        android:text="Found Assets"
-        android:paddingEnd="@dimen/_5sdp"
-        android:paddingStart="@dimen/_5sdp"
         android:fontFamily="@font/ubuntu_bold"
+        android:paddingStart="@dimen/_5sdp"
+        android:paddingEnd="@dimen/_5sdp"
+        android:text="@string/found_assetsBtn"
 
         android:textAllCaps="false"
         android:textColor="@color/colorWhite"
@@ -63,16 +60,16 @@
         android:id="@+id/missingBtn"
         android:layout_width="@dimen/_170sdp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/clear_storage_btn_background"
         android:elevation="@dimen/_10sdp"
+        android:fontFamily="@font/ubuntu_bold"
         android:paddingStart="@dimen/_30sdp"
         android:paddingEnd="@dimen/_30sdp"
-        android:text="Missing Assets"
+        android:text="@string/missing_assetsBtn"
         android:textAllCaps="false"
         android:textColor="@color/colorWhite"
         android:textSize="@dimen/_15ssp"
-        android:fontFamily="@font/ubuntu_bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -80,15 +77,15 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/exportBtn"
-        android:layout_width="@dimen/_170sdp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/use_data_btn_background"
         android:elevation="@dimen/_10sdp"
         android:fontFamily="@font/ubuntu_bold"
         android:paddingStart="@dimen/_30sdp"
         android:paddingEnd="@dimen/_30sdp"
-        android:text="Export Files"
+        android:text="@string/export_files"
         android:textAllCaps="false"
         android:textColor="@color/colorWhite"
         android:textSize="@dimen/_15ssp"
@@ -102,12 +99,12 @@
         android:id="@+id/exportTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="231dp"
+        android:layout_marginTop="132dp"
+        android:layout_marginEnd="36dp"
         android:fontFamily="@font/ubuntu_bold_italic"
-        android:text="export files "
+        android:text="@string/openfolder"
         android:textColor="@color/white"
-        android:textSize="@dimen/_17ssp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="@dimen/_14ssp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/exportBtn" />
 
@@ -115,17 +112,14 @@
         android:id="@+id/locTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="132dp"
         android:fontFamily="@font/ubuntu_bold_italic"
-        android:text="back to location "
+        android:text="@string/back_to_location"
         android:textColor="@color/white"
-        android:textSize="@dimen/_17ssp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/exportTxt"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:textSize="@dimen/_14ssp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/exportBtn"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/exportBtn" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

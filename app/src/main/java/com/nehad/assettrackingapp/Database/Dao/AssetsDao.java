@@ -35,15 +35,19 @@ public interface AssetsDao {
 
 
 
-//    @Query("UPDATE asset_table  SET  found = :found  WHERE  barcode  = :barcode AND  location =:loc ")
-//    void  setAssetFound(String barcode  , Boolean found , String loc);
+    @Query("UPDATE asset_table  SET  found = :found  WHERE  barcode  = :barcode AND  location =:loc ")
+    void  setAssetFound(String barcode  , Boolean found , String loc);
+//
+   @Query("UPDATE asset_table  SET  scannedBefore =:scannedBefore WHERE  barcode  = :barcode AND  location =:loc ")
+   void  setScannedFound(String barcode  , Boolean scannedBefore , String loc);
 
-   @Query("UPDATE asset_table  SET  found = :found  WHERE  barcode  = :barcode AND  location =:loc ")
-   void  setAssetFound(String barcode  , Boolean found , String loc);
+
+//
+//    @Query("UPDATE asset_table  SET  scannedBefore =:scannedBefore  AND found = :found  WHERE  barcode  = :barcode AND  location =:loc ")
+//    void  setScannedFound(String barcode  , Boolean scannedBefore ,Boolean found , String loc);
 
 
-
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+   @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertAsset(AssetModel assetModel);
 
     @Query("DELETE  FROM  asset_table")

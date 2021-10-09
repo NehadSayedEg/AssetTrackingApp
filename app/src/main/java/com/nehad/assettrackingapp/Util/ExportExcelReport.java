@@ -26,61 +26,105 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ExportExcelReport<assetsList> {
+public class ExportExcelReport {
     private static final String TAG = ExportExcelReport.class.getSimpleName();
 
 
 
 
     // create a list
+    public static List<Map<Integer, Object>> getAllAssetsData(Context context) {
 
-//    public static List<Map<Integer, Object>> getAllAssetsData(Context context) {
-//   //     List<Map<Integer, Object>> assetsList = null;
-//
-//       // assetsList = new ArrayList<>();
-//        Map<Integer, Object> list = new HashMap<>();
-//
-//        List<AssetModel>  assetsList = new ArrayList<>();
-//       assetsList =  AssetsDatabase.getAssetsDatabase(context.getApplicationContext()).assetsDao().getAllAssets();
-//
-//
-//        // put every value list to Map
-//        for (int i = 0 ; i <  assetsList.size() ; i++) {
-//            list.put(i , assetsList.get(i));
-//            list.get(i).toString();
-//
-//        }
-//
-//
-//
-//
-//        int assetsSize =  AssetsDatabase.getAssetsDatabase(context.getApplicationContext()).assetsDao().getAllAssets().size();
-//
-//
-//
-//    }
+        List<Map<Integer, Object>> list = null;
 
 
-    public static void writeAllAssetsReport(Context context, List<Map<Integer, Object>> assetsList, Uri uri) {
-        int assetsSize =  AssetsDatabase.getAssetsDatabase(context.getApplicationContext()).assetsDao().getAllAssets().size();
+        // create a list
+        List<TableHeader> tableHeaderList  = new ArrayList<TableHeader>();
 
+        list = new ArrayList<>();
 
-        List<TableHeader> tableHeaderList = new ArrayList<>();
 
         // add the member of list
-        tableHeaderList.add(new TableHeader(1, "barcode"));
-        tableHeaderList.add(new TableHeader(2, "description"));
-        tableHeaderList.add(new TableHeader(3, "location"));
-        tableHeaderList.add(new TableHeader(4, "Found"));
+        tableHeaderList.add(new TableHeader(0, "barcode"));
+        tableHeaderList.add(new TableHeader(1, "description"));
+        tableHeaderList.add(new TableHeader(2, "location"));
+        tableHeaderList.add(new TableHeader(3, "Found"));
+
+
+        // create map with the help of Object (stu) method create object of Map class
+        Map<Integer, Object> headerMap = new HashMap<>();
+
+        // put every value list to Map
+        for (TableHeader th : tableHeaderList) {
+            headerMap.put(th.getId() , th.getHeaderName());
+        }
+        Log.i(TAG +" Map  header " , headerMap +"");
+
+        List<Map<Integer, Object>> ExcelList = new ArrayList<>();
+
+
+        ExcelList.add(headerMap);
+
+
+        new Thread(() -> {
+            Log.i(TAG, "doInBackground: hash  Table ...");
+
+            // Map<String, Object> itemMap = new HashMap<>();
+            Map<Integer, Object> itemMap = new HashMap<>();
+
+
+            List<AssetModel> assetsList = new ArrayList<>();
+            assetsList = AssetsDatabase.getAssetsDatabase(context.getApplicationContext()).assetsDao().getAllAssets();
+
+
+            // put every value list to Map
+            for (int i = 0; i < assetsList.size(); i++) {
+
+                int  key = 0;
+                //String  key = "barcode";
+                String value =   assetsList.get(i).getBarcode();
+                itemMap.put(key, value);
+
+                int  keyDes = 1;
+                // String  keyDes = "description";
+                String valueDes =   assetsList.get(i).getDescription();
+                itemMap.put(keyDes, valueDes);
+
+                int  keyLoc = 2;
+                //String  keyLoc = "location";
+                String valueLoc =   assetsList.get(i).getLocation();
+                itemMap.put(keyLoc, valueLoc);
+
+                int  keyFound = 3;
+                //String  keyFound = "Found";
+                String valueFound = String.valueOf(assetsList.get(i).isFound());
+                itemMap.put(keyFound, valueFound);
+
+                Log.i(TAG, "item Map Size: " + itemMap.size());
+                Log.i(TAG, "item Map  " + itemMap);
+
+                ExcelList.add(itemMap);
+                Log.i( "Hash List values" , ExcelList.get(i)+ "");
+                Log.i( "Hash List size " , ExcelList.size()+ "");
+
+
+            }
+
+
+
+        }).start();
+        return ExcelList;
+
+    }
+
+
+    public static void writeAllAssetsReport(Context context, List<Map<Integer, Object>> ExcelList, Uri uri) {
+
 
 
         // create map with the help of Object (stu) method create object of Map class
         Map<Integer, String> mapHeader = new HashMap<>();
 
-        // put every value list to Map
-        for (TableHeader th : tableHeaderList) {
-            mapHeader.put(th.getId(), th.getHeaderName());
-        }
 
         try {
             XSSFWorkbook workbook = new XSSFWorkbook();
@@ -92,9 +136,9 @@ public class ExportExcelReport<assetsList> {
                 sheet.setColumnWidth(i, 15 * 256);
             }
 
-            for (int i = 0; i < assetsSize; i++) {
+            for (int i = 0; i < ExcelList.size(); i++) {
                 Row row = sheet.createRow(i);
-                Map<Integer, Object> integerObjectMap = assetsList.get(i);
+                Map<Integer, Object> integerObjectMap = ExcelList.get(i);
                 for (int j = 0; j < colums; j++) {
                     Cell cell = row.createCell(j);
                     cell.setCellValue(String.valueOf(integerObjectMap.get(j)));
@@ -114,6 +158,7 @@ public class ExportExcelReport<assetsList> {
 
 
     public static void writeExcelNew(Context context, List<Map<Integer, Object>> exportExcel, Uri uri) {
+        getAllAssetsData(context);
         try {
             XSSFWorkbook workbook = new XSSFWorkbook();
             XSSFSheet sheet = workbook.createSheet(WorkbookUtil.createSafeSheetName("Sheet1"));

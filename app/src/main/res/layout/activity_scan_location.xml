@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context=".UI.ScanLocation.ScanLocationActivity"
+
+    >
+
+
+    <EditText
+        android:id="@+id/barcodeEt"
+        android:layout_width="406dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="28dp"
+        android:background="@null"
+        android:defaultFocusHighlightEnabled="true"
+        android:focusable="true"
+        android:focusedByDefault="true"
+        android:hint="@string/barcodeET"
+        android:imeOptions="actionDone"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:padding="@dimen/_4ssp"
+        android:selectAllOnFocus="true"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="@dimen/_14ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/scanRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_margin="@dimen/_10sdp"
+        android:background="@color/colorTextHint"
+        android:clipToPadding="false"
+        android:padding="@dimen/_5sdp"
+        app:layout_constraintEnd_toEndOf="@+id/barcodeEt"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/barcodeEt"
+        app:layout_constraintTop_toBottomOf="@+id/barcodeEt" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/finishScanBtn"
+        android:layout_width="@dimen/_170sdp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_background_import"
+        android:elevation="@dimen/_10sdp"
+        android:fontFamily="@font/ubuntu_bold"
+        android:paddingStart="@dimen/_30sdp"
+        android:paddingEnd="@dimen/_30sdp"
+        android:text="@string/finish_scanBtn"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/_15ssp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scanRecyclerView"
+        app:layout_constraintVertical_bias="0.913" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

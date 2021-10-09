@@ -58,7 +58,13 @@ public class AllAssetsAdapter extends RecyclerView.Adapter<AllAssetsAdapter.Asse
                 barcodeTxt.setText(assetModel.getBarcode());
                 desTxt.setText(assetModel.getDescription());
                 locationTxt.setText(assetModel.getLocation());
-                statusTxt.setText(assetModel.getLocation());
+                if(assetModel.isFound() == false){
+                    statusTxt.setText(R.string.itemStatusMissing);
+
+                }else {
+                    statusTxt.setText(R.string.itemStatusfound);
+
+                }
             }
         }
 }

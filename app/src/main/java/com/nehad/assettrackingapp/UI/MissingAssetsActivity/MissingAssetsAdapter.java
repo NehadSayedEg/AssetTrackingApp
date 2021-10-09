@@ -60,11 +60,12 @@ public class MissingAssetsAdapter extends RecyclerView.Adapter<MissingAssetsAdap
                 desTxt.setText(assetModel.getDescription());
                 locationTxt.setText(assetModel.getLocation());
 
+                locationTxt.setText(assetModel.getLocation());
                 if(assetModel.isFound() == false){
-                    statusTxt.setText("Missing");
+                    statusTxt.setText(R.string.itemStatusMissing);
 
                 }else {
-                    statusTxt.setText("Found");
+                    statusTxt.setText(R.string.itemStatusfound);
 
                 }
             }

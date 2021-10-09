@@ -97,7 +97,23 @@ public class ExcelUtil {
                             if (j ==  0){
                                 String key = "barcode";
                                 itemMap.put(key, value);
-                                assetModel.setBarcode(value.toString());
+                                String testString  = value.toString();
+                                Log.e(TAG, testString);
+
+                                if(testString.endsWith(".0")){
+                                    Log.e(TAG, "Ends with decimal ");
+                                    testString = testString.substring(0, testString.length() - 2);
+
+                                    Log.e(TAG,  "new Value "+ testString);
+                                    assetModel.setBarcode(testString);
+                                }
+                                else{
+                                    Log.e(TAG, "No decimal end ");
+                                   assetModel.setBarcode(value.toString());
+                                    Log.e(TAG,  " Value "+ value);
+
+                                }
+//                                assetModel.setBarcode(value.toString());
 
                             }
 
@@ -131,6 +147,8 @@ public class ExcelUtil {
                         break;
                     }
                     // insert assets data to database
+                    assetModel.setScannedBefore(false);
+
                     assetModel.setFound(false);
 
                     AssetsDatabase.getAssetsDatabase(context.getApplicationContext()).assetsDao().insertAsset(assetModel);
@@ -200,6 +218,7 @@ public class ExcelUtil {
                     break;
                 case Cell.CELL_TYPE_NUMERIC: {
                     cellValue = String.valueOf(cell.getNumericCellValue());
+
                     break;
                 }
                 case Cell.CELL_TYPE_FORMULA: {
