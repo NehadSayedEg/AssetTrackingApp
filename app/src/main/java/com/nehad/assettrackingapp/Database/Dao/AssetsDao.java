@@ -66,8 +66,15 @@ public interface AssetsDao {
 //    @Query("UPDATE asset_location_change  SET   first_location = :firstLocation  WHERE  barcode  = :barcode AND  last_location =:secondLocation ")
 //    void  setAssetLocChanged(String barcode  , String firstLocation , String secondLocation);
 
-    @Query("UPDATE asset_table  SET  location = :loc  AND  found = :found WHERE  barcode  = :barcode  ")
-    void  setAssetLocChanged(String barcode  , Boolean found , String loc);
+
+    @Query("UPDATE asset_table  SET  location = :loc  WHERE  barcode  = :barcode  ")
+    void  setAssetLocChanged(String barcode   , String loc);
+
+    @Query("UPDATE asset_table  SET  found = :found  WHERE  barcode  = :barcode  ")
+    void  setAssetLocFound(String barcode   , Boolean found );
+    @Query("UPDATE asset_table  SET  scannedBefore =:scannedBefore WHERE  barcode  = :barcode  ")
+    void  setScanned(String barcode  , Boolean scannedBefore );
+
 
 
 

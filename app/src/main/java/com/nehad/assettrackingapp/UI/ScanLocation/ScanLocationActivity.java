@@ -42,57 +42,56 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import static java.lang.String.valueOf;
+
 public class ScanLocationActivity extends AppCompatActivity {
     private ActivityScanLocationBinding binding;
     public static final String TAG = ScanLocationActivity.class.getSimpleName();
 
-    EditText barcodeEt;
-    RecyclerView scanRecyclerView ;
     List<AssetModel> assetslList  = new ArrayList<>();
-
     private ScanAdapter  scanAdapter ;
     Activity activity ;
     Context context ;
-    boolean found = false;
     ExecutorService executor = Executors.newSingleThreadExecutor();
     Handler handler = new Handler(Looper.getMainLooper());
     String barcode ;
     String location;
     String scannedLocation ;
     String Des ;
-     String secondLocation ;
+    String secondLocation ;
     List<String> assetsList = new LinkedList<String>();
-
-   // private List<String> assetsList ;
     private List<AssetModel> assetsModelList = new ArrayList<>();
+    List<AssetModel> assetLoc ;
+    String newloc ;
+    String scannedBeforeLoc ;
+
+    boolean isScannedBefore ;
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_scan_location);
+
         binding = ActivityScanLocationBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        //  get passed the location key
         Intent intent = getIntent();
          location = intent.getStringExtra("loc_key");
-
-
         Log.i(TAG, "Location in scan" + location);
 
 
-        // binding.scanRecyclerView
+        // Recyclerview & Adapter
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
         layoutManager.setReverseLayout(true);
         layoutManager.setStackFromEnd(true);
-
 
         binding.scanRecyclerView.setHasFixedSize(true);
         binding.scanRecyclerView.setLayoutManager(layoutManager);
         binding.scanRecyclerView.scrollToPosition(0);
         scanAdapter = new ScanAdapter(assetslList ,activity  ,context);
         binding.scanRecyclerView.setAdapter(scanAdapter);
-
 
 
         //set the edit text focus
@@ -112,8 +111,9 @@ public class ScanLocationActivity extends AppCompatActivity {
                     Log.v("on text change  Text  ", s.toString());
 
                      barcode =   binding.barcodeEt.getText().toString();
-                    InPlaceAssets();
-                    AssetsScan();
+                    AssetScannedBefore();
+//                    InPlaceAssets();
+//                    AssetsScan();
 
 
                 }else{
@@ -145,28 +145,26 @@ public class ScanLocationActivity extends AppCompatActivity {
 
     private void AssetsScan() {
         executor.execute(() -> {
+        //    set scanned asset found &  scannedBefore
        AssetsDatabase.getAssetsDatabase(getApplicationContext()).assetsDao().setAssetFound(barcode,true, location );
       AssetsDatabase.getAssetsDatabase(getApplicationContext()).assetsDao().setScannedFound(barcode ,true, location );
 
+      // clear list to refesh data in recycler view
             assetslList.clear();
             assetslList.addAll(AssetsDatabase.getAssetsDatabase(getApplicationContext()).assetsDao().getAssetsFound(true, location ));
 
-            for (int i = 0 ; i< assetslList.size() ; i++ ) {
-                scannedLocation = assetslList.get(i).getLocation();
-                Des = assetslList.get(i).getDescription();
-                String barcode = assetslList.get(i).getBarcode();
-
-
-                Log.i("loc ", scannedLocation + "");
-                Log.i("Des ", Des + "");
-                Log.i("barcode ", barcode + "");
-
-                Log.i("isScannedBefore ", assetslList.get(i).isScannedBefore() + "");
-
-                Log.i("isFound ", assetslList.get(i).isFound() + "");
-
-
-            }
+//            for (int i = 0 ; i< assetslList.size() ; i++ ) {
+//                scannedLocation = assetslList.get(i).getLocation();
+//                Des = assetslList.get(i).getDescription();
+//                String barcode = assetslList.get(i).getBarcode();
+//
+//
+//                Log.i("loc ", scannedLocation + "");
+//                Log.i("Des ", Des + "");
+//                Log.i("barcode ", barcode + "");
+//                Log.i("isScannedBefore ", assetslList.get(i).isScannedBefore() + "");
+//                Log.i("isFound ", assetslList.get(i).isFound() + "");
+//            }
             //Background work here
             handler.post(() -> {
                 //UI Thread work here
@@ -242,8 +240,8 @@ public class ScanLocationActivity extends AppCompatActivity {
 
     private void InPlaceAssets(){
         executor.execute(() -> {
-           List<AssetModel> assetLoc = AssetsDatabase.getAssetsDatabase(getApplicationContext()).assetsDao().getAssetByBarcode(barcode );
 
+             assetLoc = AssetsDatabase.getAssetsDatabase(getApplicationContext()).assetsDao().getAssetByBarcode(barcode );
             for (int i = 0 ; i< assetLoc.size() ; i++ ) {
                  scannedLocation = assetLoc.get(i).getLocation();
                  Des = assetLoc.get(i).getDescription();
@@ -260,24 +258,23 @@ public class ScanLocationActivity extends AppCompatActivity {
 
 
             }
-
+            assetLoc.clear();
 
             //Background work here
             handler.post(() -> {
                 //UI Thread work here
                 binding.barcodeEt.setText("");
-                if (location.equals(scannedLocation)){
-                    Toast.makeText(getApplicationContext() , "scannedLocation :" + scannedLocation , Toast.LENGTH_LONG).show();
+              if (location.equals(scannedLocation)){
+                    Toast.makeText(getApplicationContext() , getString(R.string.inlocation) + scannedLocation , Toast.LENGTH_LONG).show();
 
                 }else {
-                    Toast.makeText(getApplicationContext() , "scannedLocation  not in place:" + scannedLocation , Toast.LENGTH_LONG).show();
-
+                    Toast.makeText(getApplicationContext() , getString(R.string.wronglocation) + scannedLocation , Toast.LENGTH_LONG).show();
 
 
                     AlertDialog dialog = new MaterialAlertDialogBuilder(ScanLocationActivity.this, R.style.AlertDialogTheme)
-                            .setTitle("this asset must be in " + scannedLocation)
-                            .setMessage("Do you want to change its location? ")
-                            .setPositiveButton("change location",
+                            .setTitle(getString(R.string.alertTitle) + scannedLocation)
+                            .setMessage(getString(R.string.alertmessage))
+                            .setPositiveButton(getString(R.string.alertPostiveBtn),
                                     new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
@@ -292,9 +289,20 @@ public class ScanLocationActivity extends AppCompatActivity {
 
 
                                                   //update location in assets Model table
-                                                AssetsDatabase.getAssetsDatabase(getApplicationContext()).assetsDao().setAssetLocChanged(barcode , true ,location);
+                                                AssetsDatabase.getAssetsDatabase(getApplicationContext()).assetsDao().setAssetLocChanged(barcode  , location);
+
+                                                AssetsDatabase.getAssetsDatabase(getApplicationContext()).assetsDao().setAssetLocFound(barcode  , true);
+                                                AssetsDatabase.getAssetsDatabase(getApplicationContext()).assetsDao().setScanned(barcode  , true);
 
 
+
+                                                List<AssetModel> asset = AssetsDatabase.getAssetsDatabase(getApplicationContext()).assetsDao().getAssetByBarcode(barcode);
+
+
+                                                for (int i = 0 ; i< asset.size() ; i++ ) {
+                                                     newloc = asset.get(i).getLocation();
+                                                   Log.i(" new Location Herer " , newloc);
+                                                }
 
                                           List <locationChange>  locationChangeList =
                                                   AssetsDatabase.getAssetsDatabase(getApplicationContext()).assetsDao().getAllLocationChangedList();
@@ -320,18 +328,17 @@ public class ScanLocationActivity extends AppCompatActivity {
                                                 handler.post(() -> {
                                                     //UI Thread work here
 
-                                                    Toast.makeText(getApplicationContext() , "new Location is set" + secondLocation , Toast.LENGTH_LONG).show();
+                                                    Toast.makeText(getApplicationContext() , getString(R.string.newLocToast) + newloc , Toast.LENGTH_LONG).show();
 
                                                 });
                                             });
 
-
-
                                         }
-                                    }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                    }).setNegativeButton(getString(R.string.alertCancelBtn), new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     dialog.dismiss();
+
                                 }
                             }).create();
                     dialog.show();
@@ -343,6 +350,75 @@ public class ScanLocationActivity extends AppCompatActivity {
         });
 
     }
+
+
+
+
+    private void AssetScannedBefore(){
+
+        executor.execute(() -> {
+
+
+            String scannedBeforeDes ;
+            boolean isFound ;
+
+          List <AssetModel>  scannedBeforeList = AssetsDatabase.getAssetsDatabase(getApplicationContext()).assetsDao().getAssetByBarcode(barcode );
+            for (int i = 0 ; i< scannedBeforeList.size() ; i++ ) {
+                scannedBeforeLoc = scannedBeforeList.get(i).getLocation();
+                scannedBeforeDes = scannedBeforeList.get(i).getDescription();
+                String barcode = scannedBeforeList.get(i).getBarcode();
+                isFound = scannedBeforeList.get(i).isFound();
+                isScannedBefore = scannedBeforeList.get(i).isScannedBefore();
+
+                Log.i(" scannedBeforeList loc ", scannedLocation + "");
+                Log.i(" scannedBeforeList Des ", scannedBeforeDes + "");
+                Log.i(" scannedBefore code ", barcode + "");
+
+                Log.i("isScannedBefore ",  isScannedBefore + "");
+
+                Log.i("isFound ", isFound + "");
+
+
+            }
+            scannedBeforeList.clear();
+
+            //Background work here
+            handler.post(() -> {
+                //UI Thread work here
+                binding.barcodeEt.setText("");
+                String isScannedString = valueOf(isScannedBefore);
+                Log.i("isScannedBeforeString  ",  isScannedBefore + "");
+
+                if (isScannedString.equals("true") ){
+                    Toast.makeText(getApplicationContext() , "" + scannedBeforeLoc , Toast.LENGTH_LONG).show();
+
+                    // setup the alert builder
+                    AlertDialog.Builder dialog = new MaterialAlertDialogBuilder(ScanLocationActivity.this, R.style.AlertDialogTheme);
+
+                    dialog.setTitle(" ");
+                    dialog.setMessage("This asset scanned before in." + scannedBeforeLoc);
+
+                    // add a button
+                    dialog.setPositiveButton("OK", null);
+
+                    // create and show the alert dialog
+                    dialog.create();
+                    dialog.show();
+
+                }else {
+                    Log.i("Not Scanned Before   ",   "");
+                    InPlaceAssets();
+                    AssetsScan();
+
+                }
+
+
+            });
+        });
+
+    }
+
+
 
 
 }

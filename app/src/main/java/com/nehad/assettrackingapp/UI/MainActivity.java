@@ -5,11 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -37,6 +42,8 @@ public class MainActivity extends AppCompact {
 
     private RecyclerView recyclerView;
    // private ExcelAdapter excelAdapter;
+   ProgressDialog progressDialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,13 +85,58 @@ public class MainActivity extends AppCompact {
             }
         });
 
+//        binding.importFileBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                openFileSelector();
+//
+//            }
+//        });
+
         binding.importFileBtn.setOnClickListener(new View.OnClickListener() {
+
+            Handler handle = new Handler() {
+                public void handleMessage(Message msg) {
+                    super.handleMessage(msg);
+                    progressDialog.incrementProgressBy(2); // Incremented By Value 2
+                }
+            };
+
             @Override
             public void onClick(View v) {
-                openFileSelector();
+                progressDialog = new ProgressDialog(MainActivity.this ,ProgressDialog.THEME_HOLO_DARK
+                );
+                progressDialog.setMax(100); // Progress Dialog Max Value
+                progressDialog.setMessage(getString(R.string.loadMesaage)); // Setting Message
+                progressDialog.setTitle(getString(R.string.loadTitle)); // Setting Title
+                progressDialog.setProgressStyle(android.R.style.Widget_ProgressBar_Small);
+                progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.GRAY));
 
+
+                progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL); // Progress Dialog Style Horizontal
+                progressDialog.show(); // Display Progress Dialog
+                progressDialog.setCancelable(false);
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            openFileSelector();
+
+                            while (progressDialog.getProgress() <= progressDialog.getMax()) {
+                                Thread.sleep(200);
+                                handle.sendMessage(handle.obtainMessage());
+                                if (progressDialog.getProgress() == progressDialog.getMax()) {
+                                    progressDialog.dismiss();
+                                }
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }).start();
             }
         });
+
 
         binding.HomeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -182,7 +234,6 @@ public class MainActivity extends AppCompact {
             Log.i(TAG, "doInBackground: Importing...");
             runOnUiThread(() ->
                     Toast.makeText(mContext, "Importing...", Toast.LENGTH_SHORT).show());
-           binding.arcProgress.setVisibility(View.VISIBLE);
 
             List<Map<Integer, Object>> readExcelNew = ExcelUtil.readExcelNew(mContext, uri, uri.getPath());
 

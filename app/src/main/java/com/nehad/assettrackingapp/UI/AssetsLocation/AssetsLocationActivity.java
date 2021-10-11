@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.nehad.assettrackingapp.UI.ExportFilesActivity.ExportFilesActivity;
+import com.nehad.assettrackingapp.UI.ExportFilesActivity.ExportSheetsActivity;
 import com.nehad.assettrackingapp.UI.FoundAssetsActivity.FoundAssetsActivity;
 import com.nehad.assettrackingapp.UI.HomeActivity;
 import com.nehad.assettrackingapp.UI.MissingAssetsActivity.MissingAssetsActivity;
@@ -70,7 +71,7 @@ public class AssetsLocationActivity extends AppCompatActivity {
         binding.exportBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AssetsLocationActivity.this , ExportFilesActivity.class);
+                Intent intent = new Intent(AssetsLocationActivity.this , ExportSheetsActivity.class);
                 intent.putExtra("loc_key",location);
                 startActivity(intent);
 
@@ -105,11 +106,6 @@ public class AssetsLocationActivity extends AppCompatActivity {
 
             }
         });
-
-
-
-
-
-
     }
+
 }

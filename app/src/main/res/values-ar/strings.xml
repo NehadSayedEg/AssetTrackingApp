@@ -9,6 +9,9 @@
     <string name="u00a9_about_win">©عن ون ون للحلول الذكيه</string>
     <string name="arabic_lang">عربى</string>
     <string name="english">English</string>
+    <string name="loadMesaage">يرجى الأنتظار اثناء تحميل البيانات</string>
+    <string name="loadTitle"> تحميل البيانات من الملف </string>
+
 
 
     <!--Home Activity-->
@@ -70,6 +73,22 @@
 
     <string name="toastLocation">أختر الموقع أولا</string>
     <string name="toastimported">تم ادخال البيانات بنجاح</string>
+
+
+
+    <!--    scan Activity -->
+    <string name="inlocation"> وجد فى </string>
+    <string name="wronglocation"> مكان الأصل غير صحيح</string>
+    <string name="alertTitle">مكان هذا الأصل فى </string>
+    <string name="alertmessage">هل تريد تغير مكان هذا الأصل؟</string>
+    <string name="alertPostiveBtn">غير المكان </string>
+    <string name="alertCancelBtn">لا</string>
+
+    <string name="newLocToast"> تغير مكان الأصل</string>
+    <string name="aboutString">Winwin Integrated Solutions is a total solution provider company established by Amir Samir, a renowned expert in the field of total integrated solutions field and with an experience of 22 years in the field. The company was founded in 2019 in Cairo, Egypt. The company has reached a well known reputation in few years and accomplished a great success in the market field.\n\nHead Office:\nPiece 6214, ElKods Street ,\nfrom Street 9, Mokattam Cairo-Egypt ,\nPO Box 11570\nTel/Fax: +20228404247\nHotline:\n+201205WinWin\n+201205946946\nWebsite: www.winwinis.com\nEmail: info@winwinis.com</string>
+
+
+
 
 
 

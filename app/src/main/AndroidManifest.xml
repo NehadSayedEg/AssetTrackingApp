@@ -13,6 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AssetTrackingApp">
+        <activity android:name=".UI.ExportFilesActivity.ExportSheetsActivity"></activity>
         <activity
             android:name=".UI.SearchScanedAsset.SearchAssetActivity"
             android:exported="true" />

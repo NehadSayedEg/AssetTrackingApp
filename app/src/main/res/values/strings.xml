@@ -11,22 +11,25 @@
     <string name="u00a9_about_win">© About Win</string>
     <string name="arabic_lang">عربى</string>
     <string name="english">English</string>
+    <string name="loadMesaage">Please wait Will loading data</string>
+    <string name="loadTitle"> load data from excel</string>
 
-         <!--Home Activity-->
+
+    <!--Home Activity-->
     <string name="click_to_select_location"><font size="25">click to select Location</font></string>
     <string name="scan_location">Scan location</string>
     <string name="all_assets">All assets</string>
     <string name="clear_old">Clear Old Data</string>
     <string name="search_asset">Search Asset</string>
 
-<!--    item card-->
+    <!--    item card-->
     <string name="description">Description:</string>
     <string name="barcode">Barcode:</string>
     <string name="location">Location:</string>
     <string name="status">Status</string>
     <string name="statusitem">statusitem</string>
 
-  <!--    missing Activity -->
+    <!--    missing Activity -->
     <string name="missing_assets">Missing Assets</string>
 
     <!--    missing found -->
@@ -34,11 +37,11 @@
     <string name="itemStatusMissing">Missing</string>
     <string name="itemStatusfound">Found</string>
 
-<!--    scan Activity-->
+    <!--    scan Activity-->
     <string name="barcodeET">Barcode</string>
     <string name="finish_scanBtn">Finish Scan</string>
 
-<!--    Assets location Activity-->
+    <!--    Assets location Activity-->
     <string name="scan_assetsBtn">Scan Assets</string>
     <string name="found_assetsBtn">Found Assets</string>
     <string name="missing_assetsBtn">Missing Assets</string>
@@ -46,7 +49,7 @@
     <string name="back_to_location">back to location</string>
     <string name="openfolder">Open Files Folder</string>
 
-<!--    Search Activity -->
+    <!--    Search Activity -->
     <string name="scanned_before">Scanned before:</string>
     <string name="no">No</string>
     <string name="yes">Yes</string>
@@ -66,7 +69,18 @@
     <string name="toastimported">successfully imported</string>
 
 
+    <!--    scan Activity -->
+    <string name="inlocation">Asset In location </string>
+    <string name="wronglocation">Asset not In place </string>
+    <string name="alertTitle">this asset must be in</string>
+    <string name="alertmessage">Do you want to change its location?</string>
+    <string name="alertPostiveBtn">change location</string>
+    <string name="alertCancelBtn">No</string>
 
+    <string name="newLocToast"> new Location is set</string>
+
+
+    <string name="aboutString">Winwin Integrated Solutions is a total solution provider company established by Amir Samir, a renowned expert in the field of total integrated solutions field and with an experience of 22 years in the field. The company was founded in 2019 in Cairo, Egypt. The company has reached a well known reputation in few years and accomplished a great success in the market field.\n\nHead Office:\nPiece 6214, ElKods Street ,\nfrom Street 9, Mokattam Cairo-Egypt ,\nPO Box 11570\nTel/Fax: +20228404247\nHotline:\n+201205WinWin\n+201205946946\nWebsite: www.winwinis.com\nEmail: info@winwinis.com</string>
 
 
     <string-array name="list_location">
