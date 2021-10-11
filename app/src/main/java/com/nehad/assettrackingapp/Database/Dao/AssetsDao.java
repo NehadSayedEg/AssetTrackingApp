@@ -1,5 +1,6 @@
 package com.nehad.assettrackingapp.Database.Dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
@@ -76,6 +77,11 @@ public interface AssetsDao {
     void  setScanned(String barcode  , Boolean scannedBefore );
 
 
+    @Query("SELECT * FROM  asset_table")
+    LiveData<List<AssetModel> > getAllAssetLiveData();
+
+    @Query("SELECT * FROM asset_table WHERE scannedBefore = :scanned  AND  location = :loc")
+    LiveData<List<AssetModel>> getAllScannedAssetsWithLocation(String scanned , String  loc);
 
 
 }
