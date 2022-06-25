@@ -296,7 +296,7 @@ public class ScanLocationActivity extends AppCompatActivity {
 
                   AlertDialog dialog = new MaterialAlertDialogBuilder(ScanLocationActivity.this,
                           R.style.AlertDialogTheme).setTitle(R.string.deleteTitle)
-                          .setMessage("This asset barcode not include inserted data ")
+                          .setMessage(R.string.assetNotInDatabase)
                           .setPositiveButton("Ok",
                                   new DialogInterface.OnClickListener() {
                                       @Override
@@ -444,7 +444,9 @@ public class ScanLocationActivity extends AppCompatActivity {
                     AlertDialog.Builder dialog = new MaterialAlertDialogBuilder(ScanLocationActivity.this, R.style.AlertDialogTheme);
 
                     dialog.setTitle(" ");
-                    dialog.setMessage("This asset scanned before in." + scannedBeforeLoc);
+
+                    // enter arbic
+                    dialog.setMessage(R.string.assetIsScannedBefore + scannedBeforeLoc);
 
                     // add a button
                     dialog.setPositiveButton("OK", null);

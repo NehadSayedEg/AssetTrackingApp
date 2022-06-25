@@ -70,7 +70,7 @@ public class HomeActivity extends AppCompatActivity {
                             LocationlList.add(loc);
                         }
 
-                        Log.i("loc ", loc + "");
+                       // Log.i("loc ", loc + "");
                     }
 
 
@@ -193,12 +193,6 @@ public class HomeActivity extends AppCompatActivity {
 
 
 
-    private void initDeleteDialog() {
-
-
-
-
-    }
 
 
 
