@@ -32,9 +32,12 @@ public interface AssetsDao {
 
     @Query("SELECT * from asset_table WHERE    location =:loc  AND found =:found ")
     List<AssetModel> getAssetsFound(  boolean found  , String loc );
+    @Query("SELECT * from asset_table WHERE found = :found   ")
+    List<AssetModel> getAssetMissing(boolean found  );
 
 
-
+    @Query("SELECT * from asset_table WHERE found = :found   ")
+    List<AssetModel> getAllFoundAsset(boolean found  );
 
     @Query("UPDATE asset_table  SET  found = :found  WHERE  barcode  = :barcode AND  location =:loc ")
     void  setAssetFound(String barcode  , Boolean found , String loc);

@@ -91,7 +91,7 @@ public class ExcelUtil {
 
                             Object value = getCellFormatValue(row.getCell(j));
                             String cellInfo = "r: " + i + "; c:" + j + "; v:" + value;
-                            Log.i(TAG, "readExcelNew: " + cellInfo);
+                            //Log.i(TAG, "readExcelNew: " + cellInfo);
 
 
                             if (j ==  0){
@@ -101,16 +101,16 @@ public class ExcelUtil {
                                 Log.e(TAG, testString);
 
                                 if(testString.endsWith(".0")){
-                                    Log.e(TAG, "Ends with decimal ");
+                                   // Log.e(TAG, "Ends with decimal ");
                                     testString = testString.substring(0, testString.length() - 2);
 
-                                    Log.e(TAG,  "new Value "+ testString);
+                                   // Log.e(TAG,  "new Value "+ testString);
                                     assetModel.setBarcode(testString);
                                 }
                                 else{
-                                    Log.e(TAG, "No decimal end ");
+                                    //Log.e(TAG, "No decimal end ");
                                    assetModel.setBarcode(value.toString());
-                                    Log.e(TAG,  " Value "+ value);
+                                    //Log.e(TAG,  " Value "+ value);
 
                                 }
 //                                assetModel.setBarcode(value.toString());
@@ -138,8 +138,8 @@ public class ExcelUtil {
 
                             }
                             //itemMap.put(j, value);
-                            Log.i(TAG, "item Map Size: " + itemMap.size());
-                            Log.i(TAG, "item Map  " + itemMap);
+                          //  Log.i(TAG, "item Map Size: " + itemMap.size());
+                           // Log.i(TAG, "item Map  " + itemMap);
 
 
                         }

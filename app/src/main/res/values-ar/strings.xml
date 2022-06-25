@@ -6,7 +6,7 @@
     <string name="import_file">ادخل ملف جديد</string>
     <string name="continue_tracking">تابع الجرد</string>
     <string name="clear_old_data">مسح البيانات القديمه</string>
-    <string name="u00a9_about_win">©عن ون ون للحلول الذكيه</string>
+    <string name="u00a9_about_win">©عن وين وين للحلول الذكيه</string>
     <string name="arabic_lang">عربى</string>
     <string name="english">English</string>
     <string name="loadMesaage">يرجى الأنتظار اثناء تحميل البيانات</string>
@@ -83,13 +83,29 @@
     <string name="alertmessage">هل تريد تغير مكان هذا الأصل؟</string>
     <string name="alertPostiveBtn">غير المكان </string>
     <string name="alertCancelBtn">لا</string>
+    <string name="assetNotInDatabase"> الأصل ليس من محتويات الباينات المدخله </string>
+    <string name="assetIsScannedBefore">هذا الأصل جرد من قبل فى </string>
+
+
 
     <string name="newLocToast"> تغير مكان الأصل</string>
     <string name="aboutString">Winwin Integrated Solutions is a total solution provider company established by Amir Samir, a renowned expert in the field of total integrated solutions field and with an experience of 22 years in the field. The company was founded in 2019 in Cairo, Egypt. The company has reached a well known reputation in few years and accomplished a great success in the market field.\n\nHead Office:\nPiece 6214, ElKods Street ,\nfrom Street 9, Mokattam Cairo-Egypt ,\nPO Box 11570\nTel/Fax: +20228404247\nHotline:\n+201205WinWin\n+201205946946\nWebsite: www.winwinis.com\nEmail: info@winwinis.com</string>
 
 
+    <string name="dialogScanMessage">أنتبه هناك أصول لم يتم جردها  </string>
+    <string name="alertScanPostiveBtn">تم</string>
+    <string name="alertScanCancelBtn">أستكمل الجرد</string>
 
 
+
+    <!--    export Sheets Activity -->
+
+    <string name="folderCreatedToast">تم أنشاء مجلد التخزين بنجاح</string>
+    <string name="folderExistToast">مجلد التخزين موجود  </string>
+    <string name="dialogExportMessage"> هل انتهيت من الجرد لاستخراج التقارير النهائيه </string>
+    <string name="alertExportPostiveBtn">أستخرج التقارير</string>
+    <string name="alertExportCancelBtn">لا</string>
+    <string name="dialogExportTitle"> أستخرج تقارير الجرد  </string>
 
 
 

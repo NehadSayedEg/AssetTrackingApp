@@ -80,6 +80,27 @@
     <string name="newLocToast"> new Location is set</string>
 
 
+    <string name="dialogScanMessage"> Wait Items no Scanned Yet </string>
+    <string name="alertScanPostiveBtn">OK</string>
+    <string name="alertScanCancelBtn">Continue Scan</string>
+    <string name="assetNotInDatabase">This asset barcode not include inserted data</string>
+    <string name="assetIsScannedBefore">This asset scanned before in.</string>
+
+    This asset scanned before in.
+
+
+
+    <!--    export Sheets Activity -->
+
+    <string name="folderCreatedToast">Folder Successfully created </string>
+    <string name="folderExistToast">Folder Already Exists </string>
+
+    <string name="dialogExportMessage"> Do you finish scanning to export reports </string>
+    <string name="alertExportPostiveBtn">Export Reports</string>
+    <string name="alertExportCancelBtn">No</string>
+    <string name="dialogExportTitle"> Export reports </string>
+
+
     <string name="aboutString">Winwin Integrated Solutions is a total solution provider company established by Amir Samir, a renowned expert in the field of total integrated solutions field and with an experience of 22 years in the field. The company was founded in 2019 in Cairo, Egypt. The company has reached a well known reputation in few years and accomplished a great success in the market field.\n\nHead Office:\nPiece 6214, ElKods Street ,\nfrom Street 9, Mokattam Cairo-Egypt ,\nPO Box 11570\nTel/Fax: +20228404247\nHotline:\n+201205WinWin\n+201205946946\nWebsite: www.winwinis.com\nEmail: info@winwinis.com</string>
 
 
